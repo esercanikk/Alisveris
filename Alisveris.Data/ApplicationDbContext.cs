@@ -11,12 +11,16 @@ namespace Alisveris.Data
     {
 
     }
+
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Role, string>
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
 
         }
+
+
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<File> Files { get; set; }

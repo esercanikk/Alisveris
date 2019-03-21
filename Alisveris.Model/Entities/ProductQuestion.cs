@@ -13,6 +13,7 @@ namespace Alisveris.Model.Entities
         public string StoreId { get; set; }
         public Store Store { get; set; }
         public string Title { get; set; }
+        public string Description { get; set; }
         public DateTime ShareDate { get; set; }
         public bool IsPublic { get; set; }
     }
