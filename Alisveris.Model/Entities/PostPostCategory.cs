@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Alisveris.Model.Entities
 {
-   public class PostPostCategory:BaseEntity
+    public class PostPostCategory:BaseEntity
     {
         public string PostId { get; set; }
         public Post Post { get; set; }
