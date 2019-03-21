@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Alisveris.Model.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -10,6 +11,10 @@ namespace Alisveris.Model.Entities
         {
             Images = new HashSet<ProductPhoto>();
             Reviews = new HashSet<Review>();
+            ProductColors = new HashSet<ProductColor>();
+            Wishlists = new HashSet<Wishlist>();
+            OrderItems = new HashSet<OrderItem>();
+            ProductQuestions = new HashSet<ProductQuestion>();
             Condition = Condition.NotSpecified;
         }
         public string Name { get; set; }
@@ -50,5 +55,4 @@ namespace Alisveris.Model.Entities
 
 
     }
-}
 }

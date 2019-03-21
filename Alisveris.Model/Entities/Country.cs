@@ -6,6 +6,11 @@ namespace Alisveris.Model.Entities
 {
     public class Country:BaseEntity
     {
+        public Country()
+        {
+            Cities = new HashSet<City>();
+            Addresses = new HashSet<Address>();
+        }
         public string Name { get; set; }
         public virtual ICollection<City> Cities { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }

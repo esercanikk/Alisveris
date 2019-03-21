@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Alisveris.Model.Entities
 {
+    // indirim kuponları
     public class Coupon:BaseEntity
     {
         public string CouponNo { get; set; }

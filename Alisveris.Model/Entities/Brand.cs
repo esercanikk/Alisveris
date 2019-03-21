@@ -10,6 +10,7 @@ namespace Alisveris.Model.Entities
         {
             ShowInHome = false;
             Products = new HashSet<Product>();
+            StoreBrands = new HashSet<StoreBrand>();
         }
         public string Name { get; set; }
         public string Slug { get; set; }

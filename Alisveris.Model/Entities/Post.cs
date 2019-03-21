@@ -6,6 +6,11 @@ namespace Alisveris.Model.Entities
 {
     public class Post:BaseEntity
     {
+        public Post()
+        {
+            PostPostCategories = new HashSet<PostPostCategory>();
+        }
+     
         public string Title { get; set; }
         public string Slug { get; set; }
         public string Description { get; set; }

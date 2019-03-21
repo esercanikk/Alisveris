@@ -16,8 +16,8 @@ namespace Alisveris.Model.Entities
             public string ProductId { get; set; }
             public Product Product { get; set; }
             public int Quantity { get; set; }
-            public decimal Total { get { return Product.NewPrice * Quantity; } }
-            public string Name { get; set; }
+            public decimal Total { get { return NewPrice * Quantity; } } // bug düzeltildi
+            public string Name { get; set; } // ProductName
             public string ShortDescription { get; set; }
             public decimal NewPrice { get; set; }
             public decimal OldPrice { get; set; }

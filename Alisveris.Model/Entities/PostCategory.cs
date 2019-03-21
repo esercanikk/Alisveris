@@ -9,6 +9,7 @@ namespace Alisveris.Model.Entities
         public PostCategory()
         {
             Childs = new HashSet<PostCategory>();
+            PostPostCategories = new HashSet<PostPostCategory>();
         }
         public string Name { get; set; }
         public string Slug { get; set; }
