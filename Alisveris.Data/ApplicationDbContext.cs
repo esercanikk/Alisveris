@@ -7,23 +7,20 @@ using System.Linq;
 
 namespace Alisveris.Data
 {
-    public class ApplicationUser : IdentityUser
-    {
-        public string AccessToken { get; set; }
-        public string RefreshToken { get; set; }
-        public string Pic { get; set; }
-        public string Fullname { get; set; }
-    }
     public class Role : IdentityRole
     {
 
     }
+
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Role, string>
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
 
         }
+
+
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Color> Colors { get; set; }
         public DbSet<File> Files { get; set; }
