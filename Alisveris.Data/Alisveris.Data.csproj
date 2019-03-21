@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Alisveris.Model\Alisveris.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Builders\" />
+  </ItemGroup>
+
 </Project>
