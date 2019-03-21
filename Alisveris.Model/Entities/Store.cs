@@ -6,6 +6,13 @@ namespace Alisveris.Model.Entities
 {
     public class Store:BaseEntity
     {
+        public Store()
+        {
+            Products = new HashSet<Product>();
+            StoreBrands = new HashSet<StoreBrand>();
+            Coupons = new HashSet<Coupon>();
+            ProductQuestions = new HashSet<ProductQuestion>();
+        }
         public string Name { get; set; }
         public string Slug { get; set; }
         public string Owner { get; set; }

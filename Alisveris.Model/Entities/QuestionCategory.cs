@@ -6,6 +6,10 @@ namespace Alisveris.Model.Entities
 {
     public class QuestionCategory:BaseEntity
     {
+        public QuestionCategory()
+        {
+            ProductQuestions = new HashSet<ProductQuestion>();
+        }
         public string Name { get; set; }
         public virtual ICollection<ProductQuestion> ProductQuestions { get; set; }
     }

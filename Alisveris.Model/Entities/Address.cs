@@ -7,6 +7,11 @@ namespace Alisveris.Model.Entities
 {
     public class Address:BaseEntity
     {
+        public Address()
+        {
+            OrdersToDeliver = new HashSet<Order>();
+            OrdersToInvoice = new HashSet<Order>();
+        }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }
