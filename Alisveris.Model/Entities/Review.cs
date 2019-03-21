@@ -21,4 +21,4 @@ namespace Alisveris.Model.Entities
         public Product Product { get; set; }
     }
 }
-}
+
