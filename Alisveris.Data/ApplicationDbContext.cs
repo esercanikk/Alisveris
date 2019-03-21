@@ -7,13 +7,6 @@ using System.Linq;
 
 namespace Alisveris.Data
 {
-    public class ApplicationUser : IdentityUser
-    {
-        public string AccessToken { get; set; }
-        public string RefreshToken { get; set; }
-        public string Pic { get; set; }
-        public string Fullname { get; set; }
-    }
     public class Role : IdentityRole
     {
 
