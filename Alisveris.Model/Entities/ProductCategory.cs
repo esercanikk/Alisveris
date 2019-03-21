@@ -9,6 +9,7 @@ namespace Alisveris.Model.Entities
         public ProductCategory()
         {
             Childs = new HashSet<ProductCategory>();
+            Products = new HashSet<Product>();
         }
         public string Name { get; set; }
         public string Slug { get; set; }
