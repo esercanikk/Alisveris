@@ -6,15 +6,13 @@ using System.Text;
 
 namespace Alisveris.Data.Builders
 {
-    public class DistrictBuilder
+    public class WishlistBuilder
     {
-        public DistrictBuilder(EntityTypeBuilder<District> builder)
+        public WishlistBuilder(EntityTypeBuilder<Wishlist> builder)
         {
             builder.HasKey(b => b.Id);
-            builder.Property(b => b.Name).IsRequired().HasMaxLength(100);
-            builder.HasOne(b => b.City).WithMany(c => c.Districts).HasForeignKey(p => p.CityId);
-
-
+            builder.HasIndex(e => new { e.UserName, e.ProductId, e.IsDeleted }).IsUnique();
+            builder.HasOne(b => b.Product).WithMany(p => p.Wishlists).HasForeignKey(c => c.ProductId);
             builder.HasQueryFilter(b => !b.IsDeleted);
         }
     }
