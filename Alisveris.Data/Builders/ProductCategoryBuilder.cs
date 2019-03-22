@@ -11,7 +11,7 @@ namespace Alisveris.Data.Builders
         public ProductCategoryBuilder(EntityTypeBuilder<ProductCategory> builder)
         {
             builder.HasKey(b => b.Id);
-            builder.Property(b => b.Name).IsRequired().HasMaxLength(200);
+            builder.Property(b => b.Name).IsRequired().HasMaxLength(100);
             builder.Property(b => b.Slug).IsRequired().HasMaxLength(200);
             builder.Property(b => b.Photo).HasMaxLength(200);
             builder.HasMany(b => b.Childs).WithOne(c => c.Parent).HasForeignKey(p => p.ParentId);
