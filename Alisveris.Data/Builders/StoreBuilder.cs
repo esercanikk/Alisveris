@@ -18,7 +18,7 @@ namespace Alisveris.Data.Builders
             builder.Property(b => b.ContactPhone).IsRequired().HasMaxLength(200);
             builder.Property(b => b.ContactEmail).IsRequired().HasMaxLength(200);
             builder.Property(b => b.Address).IsRequired().HasMaxLength(500);
-            builder.Property(b => b.Description).IsRequired();
+            builder.Property(b => b.Description).IsRequired().HasMaxLength(400);
             builder.HasQueryFilter(b => !b.IsDeleted);
         }
     }
