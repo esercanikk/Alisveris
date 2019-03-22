@@ -17,7 +17,7 @@ namespace Alisveris.Model.Entities
         public string Slug { get; set; }
         public string Image { get; set; }
         public bool ShowInHome { get; set; }
-        public virtual ICollection<OrderItem> OrdersItems { get; set; };
+        public virtual ICollection<OrderItem> OrdersItems { get; set; }
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<StoreBrand> StoreBrands { get; set; }
     }

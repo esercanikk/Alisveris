@@ -8,53 +8,28 @@ namespace Alisveris.Service
         {
 
         }
-        public Result(string message)
+
+        // bu yapıcı metodu hata olduğunda çağırın
+        public Result(bool success, dynamic value, string message, bool tokenStatus, string stackTrace)
         {
-            Message = message;
-        }
-        public Result(string message, bool hasError)
-        {
-            Message = message;
-            HasError = hasError;
-        }
-        public Result(dynamic value, bool tokenStatus, string message)
-        {
-            Message = message;
+            Success = success;
             Value = value;
-            TokenStatus = tokenStatus;
-        }
-        public Result(dynamic value, bool tokenStatus, string message, bool hasError, string stackTrace)
-        {
             Message = message;
-            Value = value;
             TokenStatus = tokenStatus;
-            HasError = hasError;
             StackTrace = stackTrace;
         }
-        public Result(dynamic value, bool tokenStatus, string message, bool hasError)
+        // bu yapıcı metodu işlem başarılıysa çağırın
+        public Result(bool success, dynamic value, string message, bool tokenStatus, long totalRecordCount)
         {
-            Message = message;
+            Success = success;
             Value = value;
-            TokenStatus = tokenStatus;
-            HasError = hasError;
-        }
-        public Result(dynamic value, bool tokenStatus, string message, bool hasError, long totalRecordCount)
-        {
             Message = message;
-            Value = value;
-            TokenStatus = tokenStatus;
-            HasError = hasError;
             TotalRecordCount = totalRecordCount;
+            TokenStatus = TokenStatus;
         }
-        public Result(dynamic value, long totalRecordCount, string message)
-        {
-            Message = message;
-            Value = value;
-            TotalRecordCount = totalRecordCount;
-        }
-
+        
         public dynamic Value { get; set; }
-        public bool HasError { get; set; }
+        public bool Success { get; set; }
         public string Message { get; set; }
         public long TotalRecordCount { get; set; }
         public bool TokenStatus { get; set; }
