@@ -10,6 +10,7 @@ namespace Alisveris.Model.Entities
         {
             Childs = new HashSet<ProductCategory>();
             Products = new HashSet<Product>();
+            OrderItems = new HashSet<OrderItem>();
         }
         public string Name { get; set; }
         public string Slug { get; set; }
@@ -18,6 +19,7 @@ namespace Alisveris.Model.Entities
         public bool HasSubCategory { get { return Childs.Count > 0; } }
         public string ParentId { get; set; }
         public ProductCategory Parent { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; }
         public ICollection<ProductCategory> Childs { get; set; }
         public ICollection<Product> Products { get; set; }
     }
