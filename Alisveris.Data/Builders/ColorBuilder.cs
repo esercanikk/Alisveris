@@ -12,7 +12,7 @@ namespace Alisveris.Data.Builders
         public ColorBuilder(EntityTypeBuilder<Color> builder)
         {
             builder.HasKey(b => b.Id);
-            builder.Property(b => b.Name).IsRequired().HasMaxLength(200);
+            builder.Property(b => b.Name).IsRequired().HasMaxLength(100);
             builder.Property(b => b.Value).IsRequired().HasMaxLength(200);
            
             builder.HasQueryFilter(b => !b.IsDeleted);
