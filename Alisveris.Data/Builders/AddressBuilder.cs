@@ -14,7 +14,7 @@ namespace Alisveris.Data.Builders
             builder.Property(b => b.FirstName).IsRequired().HasMaxLength(200);
             builder.Property(b => b.LastName).IsRequired().HasMaxLength(200);
             builder.Property(b => b.MiddleName).HasMaxLength(200);
-            builder.Property(b => b.Email).HasMaxLength(50);
+            builder.Property(b => b.Email).HasMaxLength(100);
             builder.Property(b => b.Company).HasMaxLength(200);
             builder.Property(b => b.IdentityNumber).HasMaxLength(100);
 
