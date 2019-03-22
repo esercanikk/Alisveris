@@ -1,4 +1,5 @@
-﻿using Alisveris.Model.Entities;
+﻿using Alisveris.Data.Builders;
+using Alisveris.Model.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -7,10 +8,7 @@ using System.Linq;
 
 namespace Alisveris.Data
 {
-    public class Role : IdentityRole
-    {
-
-    }
+   
 
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Role, string>
@@ -58,7 +56,7 @@ namespace Alisveris.Data
             {
                 property.Relational().ColumnType = "decimal(18, 2)";
             }
-            /*var brandBuilder = new BrandBuilder(builder.Entity<Brand>());
+            var brandBuilder = new BrandBuilder(builder.Entity<Brand>());
             var colorBuilder = new ColorBuilder(builder.Entity<Color>());
             var fileBuilder = new FileBuilder(builder.Entity<File>());
             var languageBuilder = new LanguageBuilder(builder.Entity<Language>());
@@ -86,10 +84,10 @@ namespace Alisveris.Data
             var districtBuilder = new DistrictBuilder(builder.Entity<District>());
             var productQuestionBuilder = new ProductQuestionBuilder(builder.Entity<ProductQuestion>());
             var questionCategoryBuilder = new QuestionCategoryBuilder(builder.Entity<QuestionCategory>());
-            var shipperBuilder = new ShipperBuilder(builder.Entity<Shipper>());*/
+            var shipperBuilder = new ShipperBuilder(builder.Entity<Shipper>());
 
             // data seeding
-            // this.Seed(builder);
+            ApplicationDbContextSeed.Seed(builder);
 
         }
     }
