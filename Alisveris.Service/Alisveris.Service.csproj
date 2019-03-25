@@ -13,7 +13,6 @@
     <Folder Include="Handlers\Setting\" />
     <Folder Include="Handlers\System\" />
     <Folder Include="Handlers\User\" />
-    <Folder Include="Queries\Cms\" />
     <Folder Include="Queries\Customer\" />
     <Folder Include="Queries\Setting\" />
     <Folder Include="Queries\Store\" />
