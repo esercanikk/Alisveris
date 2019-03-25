@@ -5,18 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Cms\" />
     <Folder Include="Commands\Customer\" />
     <Folder Include="Commands\User\" />
     <Folder Include="Commands\System\" />
     <Folder Include="Commands\Setting\" />
-    <Folder Include="Handlers\Cms\" />
     <Folder Include="Handlers\Customer\" />
     <Folder Include="Handlers\Setting\" />
     <Folder Include="Handlers\System\" />
     <Folder Include="Handlers\User\" />
     <Folder Include="Queries\Cms\" />
-    <Folder Include="Queries\Commerce\" />
     <Folder Include="Queries\Customer\" />
     <Folder Include="Queries\Setting\" />
     <Folder Include="Queries\Store\" />
