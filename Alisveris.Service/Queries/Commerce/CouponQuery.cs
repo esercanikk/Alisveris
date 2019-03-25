@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Alisveris.Model.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -15,7 +16,7 @@ namespace Alisveris.Service.Queries.Commerce
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string StoreId { get; set; }
-        public Store Store { get; set; }
+        public Alisveris.Model.Entities.Store  Store { get; set; }
         public decimal MinTotalPrice { get; set; }
         public decimal Discount { get; set; }
         public string Conditions { get; set; }
