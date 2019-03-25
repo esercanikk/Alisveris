@@ -16,7 +16,6 @@
     <Folder Include="Queries\Cms\" />
     <Folder Include="Queries\Customer\" />
     <Folder Include="Queries\Setting\" />
-    <Folder Include="Queries\Store\" />
     <Folder Include="Queries\System\" />
     <Folder Include="Queries\User\" />
   </ItemGroup>
