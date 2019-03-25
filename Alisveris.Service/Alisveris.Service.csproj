@@ -6,13 +6,11 @@
 
   <ItemGroup>
     <Folder Include="Commands\Customer\" />
-    <Folder Include="Commands\Store\" />
     <Folder Include="Commands\User\" />
     <Folder Include="Commands\System\" />
     <Folder Include="Commands\Setting\" />
     <Folder Include="Handlers\Customer\" />
     <Folder Include="Handlers\Setting\" />
-    <Folder Include="Handlers\Store\" />
     <Folder Include="Handlers\System\" />
     <Folder Include="Handlers\User\" />
     <Folder Include="Queries\Customer\" />
