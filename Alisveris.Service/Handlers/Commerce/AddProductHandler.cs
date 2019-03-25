@@ -24,27 +24,27 @@ namespace Alisveris.Service.Handlers
             if (string.IsNullOrWhiteSpace(command.Name))
             {
                 result = new Result(false, command.Name, "Ad gereklidir.", true, null);
-                return Task.FromResult(result);
+                return await Task.FromResult(result);
             }
             if (command.Name.Length > 200)
             {
                 result = new Result(false, command.Name, "Ad 200 karakterden uzun olamaz.", true, null);
-                return Task.FromResult(result);
+                return await Task.FromResult(result);
             }
             if (string.IsNullOrWhiteSpace(command.Slug))
             {
                 result = new Result(false, command.Slug, "Bağlantı gereklidir.", true, null);
-                return Task.FromResult(result);
+                return await Task.FromResult(result);
             }
             if (command.Slug.Length > 200)
             {
                 result = new Result(false, command.Slug, "Bağlantı 200 karakterden uzun olamaz.", true, null);
-                return Task.FromResult(result);
+                return await Task.FromResult(result);
             }
             if (!string.IsNullOrEmpty(command.MetaTitle) && command.MetaTitle.Length > 200)
             {
                 result = new Result(false, command.MetaTitle, "Meta Başlığı 200 karakterden uzun olamaz.", true, null);
-                return Task.FromResult(result);
+                return await Task.FromResult(result);
             }
 
             // map command to the model
@@ -58,7 +58,7 @@ namespace Alisveris.Service.Handlers
 
             result = new Result(true, model.Id, "Ürün başarıyla eklendi.", true, 1);
             // return the result
-            return Task.FromResult(result);
+            return await Task.FromResult(result);
         }
     }
 }
