@@ -32,7 +32,7 @@ namespace Alisveris.Service.Queries
         public string CategoryId { get; set; }
         public string BrandId { get; set; }
         public string StoreId { get; set; }
-        public Store Store { get; set; }
+        public Alisveris.Model.Entities.Store Store { get; set; }
         public IList<ProductPhoto> Images { get; set; }
         public Condition Condition { get; set; }
     }
