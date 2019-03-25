@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Alisveris.Service.Queries.Commerce
+namespace Alisveris.Service.Queries
 {
     public class CouponQuery:Query
     {   
