@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Alisveris.Service.Queries.Commerce
+namespace Alisveris.Service.Queries
 {
-    public class CouponQuery
+    public class CouponQuery:Query
     {
         public string Id { get; set; }
         public string CouponNo { get; set; }

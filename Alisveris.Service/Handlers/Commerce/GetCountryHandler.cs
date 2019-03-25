@@ -1,6 +1,6 @@
 ﻿using Alisveris.Data;
 using Alisveris.Model.Entities;
-using Alisveris.Service.Queries;
+using Alisveris.Service.Queries.Commerce;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -9,28 +9,29 @@ using System.Threading.Tasks;
 
 namespace Alisveris.Service.Handlers
 {
-    public class GetProductHandler : CommandHandler<Commands.GetProduct>
+    public class GetCountryHandler : CommandHandler<Commands.GetCountry>
     {
-        private readonly IRepository<Product> productRepository;
-        public GetProductHandler(IRepository<Product> productRepository)
+        private readonly IRepository<Country> countryRepository;
+        public GetCountryHandler(IRepository<Country> countryRepository)
         {
-            this.productRepository = productRepository;
+            this.countryRepository = countryRepository;
         }
-        public override async Task<dynamic> HandleAsync(Commands.GetProduct command)
+        public override async Task<dynamic> HandleAsync(Commands.GetCountry command)
         {
-            // get the model from database
             Result result;
-            var model = await productRepository.GetAsync(command.Id, "Images", "Category", "Brand", "Store");
+            // get the model from database
+            var model = await countryRepository.GetAsync(command.Id);
 
             // if nothing found
             if (model == null)
             {
+
                 // return the not found result
                 result = new Result(false, command.Id, "Ürün bulunamadı.", true, null);
                 return await Task.FromResult(result);
             }
             // map the model to query
-            var value = Mapper.Map<ProductQuery>(model);
+            var value = Mapper.Map<CountryQuery>(model);
 
             // return the query result
             result = new Result(true, value, "1 adet ürün bulundu.", true, 1);

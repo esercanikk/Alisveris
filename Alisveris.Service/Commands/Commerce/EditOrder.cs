@@ -1,12 +1,12 @@
 ﻿using Alisveris.Model.Entities;
-using Alisveris.Model.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Alisveris.Service.Queries
+namespace Alisveris.Service.Commands
 {
-    public class OrderQuery:Query
+    [Describe(CommandType.Commerce, Authorities.Update, "Sipariş güncellendi.")]
+    public class EditOrder : Command
     {
         public string Id { get; set; }
         public string UserName { get; set; }
@@ -19,8 +19,7 @@ namespace Alisveris.Service.Queries
         public string DeliveryAddressId { get; set; }
         public string InvoiceAddressId { get; set; }
         public int Total { get; set; }
-        public IList<OrderItem> OrderItems { get; set; }
-        //public OrderItem OrderItem { get; set; }
-        public OrderStatus OrderStatus { get; set; }
+        public string StoreId { get; set; }
+        public Store Store { get; set; }
     }
 }
