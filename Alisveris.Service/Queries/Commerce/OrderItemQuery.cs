@@ -7,7 +7,7 @@ namespace Alisveris.Service.Queries
 {
     public class OrderItemQuery
     {
-        public string Id { get; set; }
+
         public string OrderId { get; set; }
         public Order Order { get; set; }
         public string ProductId { get; set; }
@@ -24,7 +24,7 @@ namespace Alisveris.Service.Queries
         public string BrandId { get; set; }
         public Brand Brand { get; set; }
         public string StoreId { get; set; }
-        public Store Store { get; set; }
+        public Alisveris.Model.Entities.Store Store { get; set; }
         public Shipper Shipper { get; set; }
         public string ShipperId { get; set; }
 
