@@ -1,6 +1,6 @@
 ﻿using Alisveris.Data;
 using Alisveris.Model.Entities;
-using Alisveris.Service.Queries.Commerce;
+using Alisveris.Service.Queries;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -9,16 +9,16 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Alisveris.Service.Handlers
+namespace Alisveris.Service.Handlers.Setting
 {
-    public class SearchProductCategoriesHandler : CommandHandler<Commands.SearchProductCategories>
+    public class SearchLanguageHandler : CommandHandler<Commands.SearchLanguage>
     {
-        private readonly IRepository<ProductCategory> productcategoryRepository;
-        public SearchProductCategoriesHandler(IRepository<ProductCategory> productcategoryRepository)
+        private readonly IRepository<Language> languageRepository;
+        public SearchLanguageHandler(IRepository<Language> languageRepository)
         {
-            this.productcategoryRepository = productcategoryRepository;
+            this.languageRepository = languageRepository;
         }
-        public override async Task<dynamic> HandleAsync(Commands.SearchProductCategories command)
+        public override async Task<dynamic> HandleAsync(Commands.SearchLanguage command)
         {
             Result result;
             // define pagination variables
@@ -26,7 +26,7 @@ namespace Alisveris.Service.Handlers
             int take = command.PageSize;
 
             // define the sort expression
-            Expression<Func<ProductCategory, object>> orderby;
+            Expression<Func<Language, object>> orderby;
             switch (command.SortField)
             {
                 case "name":
@@ -35,8 +35,8 @@ namespace Alisveris.Service.Handlers
                 case "isActive":
                     orderby = o => o.IsActive;
                     break;
-                case "slug":
-                    orderby = o => o.Slug;
+                case "flag":
+                    orderby = o => o.Flag;
                     break;
                 default:
                     orderby = o => o.CreatedAt;
@@ -47,15 +47,12 @@ namespace Alisveris.Service.Handlers
             bool desc = (command.SortOrder == "desc" ? true : false);
 
             // define the filter
-            Expression<Func<ProductCategory, bool>> where;
+            Expression<Func<Language, bool>> where;
             if (command.IsAdvancedSearch)
             {
                 where = w => (!string.IsNullOrEmpty(command.Name) ? w.Name.Contains(command.Name) : true)
                 && (command.IsActive != null ? w.IsActive == command.IsActive : true)
-                && (command.Slug != null ? w.Slug == command.Slug : true)
-                && (command.ParentId != null ? w.ParentId == command.ParentId : true);
-
-
+                && (command.Flag != null ? w.Flag == command.Flag : true);
             }
             else
             {
@@ -65,18 +62,18 @@ namespace Alisveris.Service.Handlers
             // select the results by doing filtering, sorting and optionally paging, and map them
             if (command.IsPagedSearch)
             {
-                var value = productcategoryRepository.GetManyPaged(skip, take, out int totalRecordCount, where, orderby, desc)
-                .Select(x => Mapper.Map<ProductCategoryQuery>(x)).ToList();
+                var value = languageRepository.GetManyPaged(skip, take, out int totalRecordCount, where, orderby, desc)
+                .Select(x => Mapper.Map<LanguageQuery>(x)).ToList();
                 // return the paged query
-                result = new Result(true, value, $"Bulunan {totalRecordCount} ürün kategorisinin {command.PageNumber}. sayfasındaki kayıtlar.", false, totalRecordCount);
+                result= new Result( true, value, $"Bulunan {totalRecordCount} dillerin {command.PageNumber}. sayfasındaki kayıtlar.", true, totalRecordCount);
                 return await Task.FromResult(result);
             }
             else
             {
-                var value = productcategoryRepository.GetMany(where, orderby, desc)
-                .Select(x => Mapper.Map<ProductCategoryQuery>(x)).ToList();
+                var value = languageRepository.GetMany(where, orderby, desc)
+                .Select(x => Mapper.Map<LanguageQuery>(x)).ToList();
                 // return the query
-                result = new Result(true, value, $"{value.Count()} adet ürün kategorisi bulundu.", false, value.Count());
+                result= new Result( true, value, $"{value.Count()} adet dil bulundu.", false, value.Count());
                 return await Task.FromResult(result);
             }
         }
