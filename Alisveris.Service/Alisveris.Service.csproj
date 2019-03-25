@@ -8,8 +8,8 @@
     <Folder Include="Commands\Cms\" />
     <Folder Include="Commands\Customer\" />
     <Folder Include="Commands\Store\" />
-    <Folder Include="Commands\User\" />
     <Folder Include="Commands\System\" />
+    <Folder Include="Commands\User\" />
     <Folder Include="Commands\Setting\" />
     <Folder Include="Handlers\Cms\" />
     <Folder Include="Handlers\Customer\" />
