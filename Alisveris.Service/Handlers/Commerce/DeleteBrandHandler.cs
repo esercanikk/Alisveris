@@ -36,7 +36,10 @@ namespace Alisveris.Service.Handlers
 
 
             // return the query result
-            return new Result(true, command.Id, "1 adet marka silindi.", false, 1);
+            
+            result = new Result(true, command.Id, "Ürün resmi başarıyla eklendi.", false, 1);
+
+            return await Task.FromResult(result);
         }
     }
 }
