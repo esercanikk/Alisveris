@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Alisveris.Service.Handlers.Commerce
+namespace Alisveris.Service.Handlers
 {
     public class SearchCouponsHandler : CommandHandler<Commands.SearchCoupons>
     {
