@@ -1,9 +1,6 @@
 ﻿using Alisveris.Data;
 using Alisveris.Model.Entities;
 using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Alisveris.Service.Handlers
