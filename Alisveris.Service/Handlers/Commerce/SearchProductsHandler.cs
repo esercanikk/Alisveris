@@ -107,7 +107,7 @@ namespace Alisveris.Service.Handlers
                 var value2 = productRepository.GetMany(where, orderby, desc, "Images", "Category", "Brand", "Store");
                 var value = value2.Select(x => Mapper.Map<ProductQuery>(x)).ToList();
                 // return the query
-                result = new Result(true, value, $"{value.Count()} adet ürün bulundu.", true, value.Count());
+                result = new Result(true, value, $"{value.Count()} adet ürün bulundu.", false, value.Count());
                 return await Task.FromResult(result);
             }
         }
