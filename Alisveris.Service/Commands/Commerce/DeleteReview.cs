@@ -4,9 +4,10 @@ using System.Text;
 
 namespace Alisveris.Service.Commands
 {
-    [Describe(CommandType.Cms, Authorities.Read, "Bir dosya getirir.")]
-    public class GetFile : Command
+    [Describe(CommandType.Commerce, Authorities.Delete, "Görüş silindi.")]
+    public class DeleteReview : Command
     {
         public string Id { get; set; }
+
     }
 }

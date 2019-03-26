@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Alisveris.Service.Commands
 {
-    [Describe(CommandType.Cms, Authorities.Read, "Bir dosya getirir.")]
-    public class GetFile : Command
+    [Describe(CommandType.Cms, Authorities.Read, "Bir mağaza markası getirir.")]
+    public class GetStoreBrand : Command
     {
         public string Id { get; set; }
     }
