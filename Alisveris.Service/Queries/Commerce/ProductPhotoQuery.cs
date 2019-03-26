@@ -6,9 +6,9 @@ using System.Text;
 
 namespace Alisveris.Service.Queries
 {
-    public class ProductPhotoQuery
+    public class ProductPhotoQuery : Query
     {
-        public string Id { get; set; }
+       
         public string Medium { get; set; }
         public string Small { get; set; }
         public string Large { get; set; }

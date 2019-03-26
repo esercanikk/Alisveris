@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Alisveris.Service.Queries.Commerce
 {
-    public class PostPostCategoryQuery
+    public class PostPostCategoryQuery : Query
     {
         public string Id { get; set; }
         public string PostId { get; set; }

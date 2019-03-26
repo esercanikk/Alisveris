@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Alisveris.Service.Queries.Commerce
 {
-    public class AdvertisementQuery
+    public class AdvertisementQuery : Query
     {
         public string Id { get; set; }
         public string Title { get; set; }

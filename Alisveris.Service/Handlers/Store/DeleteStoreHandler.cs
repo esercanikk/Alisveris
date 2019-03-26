@@ -9,9 +9,9 @@ namespace Alisveris.Service.Handlers
 {
     public class DeleteStoreHandler : CommandHandler<Commands.DeleteStore>
     {
-        private readonly IRepository<Store> storeRepository;
+        private readonly IRepository<Model.Entities.Store> storeRepository;
         private readonly IUnitOfWork unitOfWork;
-        public DeleteStoreHandler(IUnitOfWork unitOfWork, IRepository<Store> storeRepository)
+        public DeleteStoreHandler(IUnitOfWork unitOfWork, IRepository<Model.Entities.Store> storeRepository)
         {
             this.unitOfWork = unitOfWork;
             this.storeRepository = storeRepository;

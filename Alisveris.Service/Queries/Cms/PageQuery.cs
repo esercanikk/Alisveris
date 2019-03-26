@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Alisveris.Service.Queries
 {
-    public class PageQuery:Query
+    public class PageQuery : Query
     {
-       
+
         public string Title { get; set; }
         public string Slug { get; set; }
         public string Body { get; set; }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Alisveris.Service.Queries
 {
-    public class ProductQuestionQuery
+    public class ProductQuestionQuery : Query
     {
         public string Id { get; set; }
         public string ProductId { get; set; }

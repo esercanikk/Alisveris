@@ -53,7 +53,7 @@ namespace Alisveris.Service.Handlers
             colorRepository.Update(model);
 
             // save changes to database
-            unitOfWork.SaveChanges();
+           await unitOfWork.SaveChangesAsync();
 
             // return the result
             result = new Result(true, model.Id, "Renk başarıyla güncellendi.", true, 1);
