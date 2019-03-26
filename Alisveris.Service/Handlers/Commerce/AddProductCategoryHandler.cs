@@ -1,20 +1,23 @@
 ﻿using Alisveris.Data;
 using Alisveris.Model.Entities;
 using AutoMapper;
+using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Alisveris.Service.Handlers
 {
-    public class AddProductHandler : CommandHandler<Commands.AddProduct>
+    public class AddProductCategoryHandler : CommandHandler<Commands.AddProductCategory>
     {
-        private readonly IRepository<Product> productRepository;
+        private readonly IRepository<ProductCategory> productcategoryRepository;
         private readonly IUnitOfWork unitOfWork;
-        public AddProductHandler(IUnitOfWork unitOfWork, IRepository<Product> productRepository)
+        public AddProductCategoryHandler(IUnitOfWork unitOfWork, IRepository<ProductCategory> productcategoryRepository)
         {
             this.unitOfWork = unitOfWork;
-            this.productRepository = productRepository;
+            this.productcategoryRepository = productcategoryRepository;
         }
-        public override async Task<dynamic> HandleAsync(Commands.AddProduct command)
+        public override async Task<dynamic> HandleAsync(Commands.AddProductCategory command)
         {
             Result result;
             // validate the command
@@ -30,31 +33,33 @@ namespace Alisveris.Service.Handlers
             }
             if (string.IsNullOrWhiteSpace(command.Slug))
             {
-                result = new Result(false, command.Slug, "Bağlantı gereklidir.", true, null);
+                result = new Result(false, command.Name, "Bağlantı gereklidir.", true, null);
                 return await Task.FromResult(result);
             }
             if (command.Slug.Length > 200)
             {
-                result = new Result(false, command.Slug, "Bağlantı 200 karakterden uzun olamaz.", true, null);
+                result = new Result(false, command.Name, "Bağlantı 200 karakterden uzun olamaz.", true, null);
                 return await Task.FromResult(result);
             }
-            if (!string.IsNullOrEmpty(command.MetaTitle) && command.MetaTitle.Length > 200)
+
+            if (!string.IsNullOrEmpty(command.Photo) && command.Photo.Length > 200)
             {
-                result = new Result(false, command.MetaTitle, "Meta Başlığı 200 karakterden uzun olamaz.", true, null);
+                result = new Result(false, command.Name, "Resim 200 karakterden uzun olamaz.", true, null);
                 return await Task.FromResult(result);
             }
+
 
             // map command to the model
-            var model = Mapper.Map<Product>(command);
+            var model = Mapper.Map<ProductCategory>(command);
 
             // mark the model to insert
-            productRepository.Insert(model);
+            productcategoryRepository.Insert(model);
 
             // save changes to database
-            await unitOfWork.SaveChangesAsync();
+            unitOfWork.SaveChanges();
 
             // return the result
-            result = new Result(true, model.Id, "Ürün başarıyla eklendi.", true, 1);
+            result = new Result(true, model.Id, "Ürün kategorisi başarıyla eklendi.", true, 1);
             return await Task.FromResult(result);
         }
     }
