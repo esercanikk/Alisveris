@@ -13,7 +13,7 @@ namespace Alisveris.Service
 
     public interface ICommandHandler<T> : ICommandHandler where T : Command
     {
-        dynamic Handle(T command);
+        dynamic HandleAsync(T command);
         Task<dynamic> HandleAsync(T command);
     }
 
@@ -32,10 +32,10 @@ namespace Alisveris.Service
 
         public virtual dynamic Handle(Command command)
         {
-            return Handle((T)command);
+            return HandleAsync((T)command);
         }
 
-        public virtual dynamic Handle(T command)
+        public virtual dynamic HandleAsync(T command)
         {
             throw new NotImplementedException();
         }
