@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Alisveris.Service.Handlers.Commerce
+namespace Alisveris.Service.Handlers
 {
     public class GetProductHandler : CommandHandler<Commands.GetProduct>
     {
