@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Alisveris.Service.Queries
+namespace Alisveris.Service.Queries.Cms
 {
     public class FileQuery
     {
