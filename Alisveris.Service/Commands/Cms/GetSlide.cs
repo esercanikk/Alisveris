@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Alisveris.Service.Commands
 {
-    [Describe(CommandType.Cms, Authorities.Read, "Bir dosya getirir.")]
-    public class GetFile : Command
+    [Describe(CommandType.Cms, Authorities.Read, "Bir slayt getirir.")]
+    public class GetSlide : Command
     {
         public string Id { get; set; }
     }
