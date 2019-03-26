@@ -1,6 +1,6 @@
 ﻿using Alisveris.Data;
 using Alisveris.Model.Entities;
-using Alisveris.Service.Queries.Commerce;
+using Alisveris.Service.Queries;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -11,28 +11,35 @@ using System.Threading.Tasks;
 
 namespace Alisveris.Service.Handlers
 {
-    public class SearchCitysHandler : CommandHandler<Commands.SearchCitys>
+    public class SearchReviewsHandler : CommandHandler<Commands.SearchReviews>
     {
-        private readonly IRepository<City> cityRepository;
-        public SearchCitysHandler(IRepository<City> cityRepository)
+        private readonly IRepository<Review> reviewRepository;
+        public SearchReviewsHandler(IRepository<Review> reviewRepository)
         {
-            this.cityRepository = cityRepository;
+            this.reviewRepository = reviewRepository;
         }
-        public override async Task<dynamic> HandleAsync(Commands.SearchCitys command)
+        public override async Task<dynamic> HandleAsync(Commands.SearchReviews command)
         {
             // define pagination variables
             int skip = command.PageSize * (command.PageNumber - 1);
             int take = command.PageSize;
             Result result;
+
             // define the sort expression
-            Expression<Func<City, object>> orderby;
+            Expression<Func<Review, object>> orderby;
             switch (command.SortField)
             {
                 case "name":
                     orderby = o => o.Name;
                     break;
-                case "countryId":
-                    orderby = o => o.CountryId;
+                case "isActive":
+                    orderby = o => o.IsActive;
+                    break;
+                case "email":
+                    orderby = o => o.Email;
+                    break;
+                case "productId":
+                    orderby = o => o.ProductId;
                     break;
                 default:
                     orderby = o => o.CreatedAt;
@@ -43,12 +50,13 @@ namespace Alisveris.Service.Handlers
             bool desc = (command.SortOrder == "desc" ? true : false);
 
             // define the filter
-            Expression<Func<City, bool>> where;
+            Expression<Func<Review, bool>> where;
             if (command.IsAdvancedSearch)
             {
                 where = w => (!string.IsNullOrEmpty(command.Name) ? w.Name.Contains(command.Name) : true)
-                && (command.CountryId != null ? w.CountryId == command.CountryId : true);
-
+                && (command.IsActive != null ? w.IsActive == command.IsActive : true)
+                && (command.Email != null ? w.Email == command.Email : true)
+                && (command.ProductId != null ? w.ProductId == command.ProductId : true);
             }
             else
             {
@@ -58,18 +66,19 @@ namespace Alisveris.Service.Handlers
             // select the results by doing filtering, sorting and optionally paging, and map them
             if (command.IsPagedSearch)
             {
-                var value = cityRepository.GetManyPaged(skip, take, out int totalRecordCount, where, orderby, desc, "Country", "District")
-                .Select(x => Mapper.Map<CityQuery>(x)).ToList();
+                
+                var value = reviewRepository.GetManyPaged(skip, take, out int totalRecordCount, where, orderby, desc)
+                .Select(x => Mapper.Map<ReviewQuery>(x)).ToList();
                 // return the paged query
-                result= new Result(true, value, $"Bulunan {totalRecordCount} şehirin {command.PageNumber}. sayfasındaki kayıtlar.", true, totalRecordCount);
+                result = new Result(true,value, $"Bulunan {totalRecordCount} görüşün {command.PageNumber}. sayfasındaki kayıtlar.", true, totalRecordCount);
                 return await Task.FromResult(result);
             }
             else
             {
-                var value = cityRepository.GetMany(where, orderby, desc, "Country", "District")
-                .Select(x => Mapper.Map<CityQuery>(x)).ToList();
+                var value = reviewRepository.GetMany(where, orderby, desc)
+                .Select(x => Mapper.Map<ReviewQuery>(x)).ToList();
                 // return the query
-                result= new Result(true, value, $"{value.Count()} adet şehir bulundu.", false, value.Count());
+                 result =new Result(true,value, $"{value.Count()} adet görüş bulundu.", true, value.Count());
                 return await Task.FromResult(result);
             }
         }

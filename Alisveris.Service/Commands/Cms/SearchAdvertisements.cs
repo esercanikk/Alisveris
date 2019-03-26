@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Alisveris.Service.Commands
 {
-    [Describe(CommandType.Cms, Authorities.Read, "Yazı kategorilerini arar.")]
-    public class SearchPostCategories : Command, ISearchCommand
+    [Describe(CommandType.Cms, Authorities.Read, "Reklam arar.")]
+    public class SearchAdvertisements : Command, ISearchCommand
     {
-        public SearchPostCategories()
+        public SearchAdvertisements()
         {
             IsAdvancedSearch = false;
             SortField = "createdAt";
@@ -16,9 +16,13 @@ namespace Alisveris.Service.Commands
             PageNumber = 1;
             PageSize = 10;
         }
-        public string Name { get; set; }
+
+        public string Title { get; set; }
         public bool? IsActive { get; set; }
-        public string Slug { get; set; }
+        public string SubTitle { get; set; }
+        public string Html { get; set; }
+        public string Image { get; set; }
+        public string Location { get; set; }
         public bool IsAdvancedSearch { get; set; }
         public string SortField { get; set; }
         public string SortOrder { get; set; }

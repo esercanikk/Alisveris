@@ -11,21 +11,21 @@ using System.Threading.Tasks;
 
 namespace Alisveris.Service.Handlers
 {
-    public class SearchCountrysHandler : CommandHandler<Commands.SearchCountrys>
+    public class SearchQuestionCategoriesHandler : CommandHandler<Commands.SearchQuestionCategory>
     {
-        private readonly IRepository<Country> countryRepository;
-        public SearchCountrysHandler(IRepository<Country> countryRepository)
+        private readonly IRepository<QuestionCategory> questionCategoryRepository;
+        public SearchQuestionCategoriesHandler(IRepository<QuestionCategory> questionCategoryRepository)
         {
-            this.countryRepository = countryRepository;
+            this.questionCategoryRepository = questionCategoryRepository;
         }
-        public override async Task<dynamic> HandleAsync(Commands.SearchCountrys command)
+        public override async Task<dynamic> HandleAsync(Commands.SearchQuestionCategory command)
         {
             // define pagination variables
             int skip = command.PageSize * (command.PageNumber - 1);
             int take = command.PageSize;
             Result result;
             // define the sort expression
-            Expression<Func<Country, object>> orderby;
+            Expression<Func<QuestionCategory, object>> orderby;
             switch (command.SortField)
             {
                 case "name":
@@ -40,7 +40,7 @@ namespace Alisveris.Service.Handlers
             bool desc = (command.SortOrder == "desc" ? true : false);
 
             // define the filter
-            Expression<Func<Country, bool>> where;
+            Expression<Func<QuestionCategory, bool>> where;
             if (command.IsAdvancedSearch)
             {
                 where = w => (!string.IsNullOrEmpty(command.Name) ? w.Name.Contains(command.Name) : true);
@@ -55,18 +55,18 @@ namespace Alisveris.Service.Handlers
             // select the results by doing filtering, sorting and optionally paging, and map them
             if (command.IsPagedSearch)
             {
-                var value = countryRepository.GetManyPaged(skip, take, out int totalRecordCount, where, orderby, desc)
-                .Select(x => Mapper.Map<CountryQuery>(x)).ToList();
+                var value = questionCategoryRepository.GetManyPaged(skip, take, out int totalRecordCount, where, orderby, desc, "ProductQuestion")
+                .Select(x => Mapper.Map<QuestionCategoryQuery>(x)).ToList();
                 // return the paged query
-                result = new Result(true, value, $"Bulunan {totalRecordCount} ülkenin {command.PageNumber}. sayfasındaki kayıtlar.", true, totalRecordCount);
+                result= new Result(true, value, $"Bulunan {totalRecordCount} soru kategorisinin {command.PageNumber}. sayfasındaki kayıtlar.", true, totalRecordCount);
                 return await Task.FromResult(result);
             }
             else
             {
-                var value = countryRepository.GetMany(where, orderby, desc)
-                .Select(x => Mapper.Map<CountryQuery>(x)).ToList();
+                var value = questionCategoryRepository.GetMany(where, orderby, desc, "ProductQuestion")
+                .Select(x => Mapper.Map<QuestionCategoryQuery>(x)).ToList();
                 // return the query
-                result = new Result(true, value, $"{value.Count()} adet ülke bulundu.", false, value.Count());
+                result= new Result(true, value, $"{value.Count()} adet soru kategorisi bulundu.", false, value.Count());
                 return await Task.FromResult(result);
             }
         }

@@ -11,25 +11,28 @@ using System.Threading.Tasks;
 
 namespace Alisveris.Service.Handlers
 {
-    public class SearchQuestionCategoryHandler : CommandHandler<Commands.SearchQuestionCategory>
+    public class SearchCitiesHandler : CommandHandler<Commands.SearchCitys>
     {
-        private readonly IRepository<QuestionCategory> questionCategoryRepository;
-        public SearchQuestionCategoryHandler(IRepository<QuestionCategory> questionCategoryRepository)
+        private readonly IRepository<City> cityRepository;
+        public SearchCitiesHandler(IRepository<City> cityRepository)
         {
-            this.questionCategoryRepository = questionCategoryRepository;
+            this.cityRepository = cityRepository;
         }
-        public override async Task<dynamic> HandleAsync(Commands.SearchQuestionCategory command)
+        public override async Task<dynamic> HandleAsync(Commands.SearchCitys command)
         {
             // define pagination variables
             int skip = command.PageSize * (command.PageNumber - 1);
             int take = command.PageSize;
             Result result;
             // define the sort expression
-            Expression<Func<QuestionCategory, object>> orderby;
+            Expression<Func<City, object>> orderby;
             switch (command.SortField)
             {
                 case "name":
                     orderby = o => o.Name;
+                    break;
+                case "countryId":
+                    orderby = o => o.CountryId;
                     break;
                 default:
                     orderby = o => o.CreatedAt;
@@ -40,11 +43,11 @@ namespace Alisveris.Service.Handlers
             bool desc = (command.SortOrder == "desc" ? true : false);
 
             // define the filter
-            Expression<Func<QuestionCategory, bool>> where;
+            Expression<Func<City, bool>> where;
             if (command.IsAdvancedSearch)
             {
-                where = w => (!string.IsNullOrEmpty(command.Name) ? w.Name.Contains(command.Name) : true);
-
+                where = w => (!string.IsNullOrEmpty(command.Name) ? w.Name.Contains(command.Name) : true)
+                && (command.CountryId != null ? w.CountryId == command.CountryId : true);
 
             }
             else
@@ -55,18 +58,18 @@ namespace Alisveris.Service.Handlers
             // select the results by doing filtering, sorting and optionally paging, and map them
             if (command.IsPagedSearch)
             {
-                var value = questionCategoryRepository.GetManyPaged(skip, take, out int totalRecordCount, where, orderby, desc, "ProductQuestion")
-                .Select(x => Mapper.Map<QuestionCategoryQuery>(x)).ToList();
+                var value = cityRepository.GetManyPaged(skip, take, out int totalRecordCount, where, orderby, desc, "Country", "District")
+                .Select(x => Mapper.Map<CityQuery>(x)).ToList();
                 // return the paged query
-                result= new Result(true, value, $"Bulunan {totalRecordCount} soru kategorisinin {command.PageNumber}. sayfasındaki kayıtlar.", true, totalRecordCount);
+                result= new Result(true, value, $"Bulunan {totalRecordCount} şehirin {command.PageNumber}. sayfasındaki kayıtlar.", true, totalRecordCount);
                 return await Task.FromResult(result);
             }
             else
             {
-                var value = questionCategoryRepository.GetMany(where, orderby, desc, "ProductQuestion")
-                .Select(x => Mapper.Map<QuestionCategoryQuery>(x)).ToList();
+                var value = cityRepository.GetMany(where, orderby, desc, "Country", "District")
+                .Select(x => Mapper.Map<CityQuery>(x)).ToList();
                 // return the query
-                result= new Result(true, value, $"{value.Count()} adet soru kategorisi bulundu.", false, value.Count());
+                result= new Result(true, value, $"{value.Count()} adet şehir bulundu.", false, value.Count());
                 return await Task.FromResult(result);
             }
         }
