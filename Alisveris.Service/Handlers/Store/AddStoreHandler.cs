@@ -10,9 +10,9 @@ namespace Alisveris.Service.Handlers
 {
     public class AddStoreHandler : CommandHandler<Commands.AddStore>
     {
-        private readonly IRepository<Store> storeRepository;
+        private readonly IRepository<Alisveris.Model.Entities.Store> storeRepository;
         private readonly IUnitOfWork unitOfWork;
-        public AddStoreHandler(IUnitOfWork unitOfWork, IRepository<Store> storeRepository)
+        public AddStoreHandler(IUnitOfWork unitOfWork, IRepository<Alisveris.Model.Entities.Store> storeRepository)
         {
             this.unitOfWork = unitOfWork;
             this.storeRepository = storeRepository;
@@ -43,7 +43,7 @@ namespace Alisveris.Service.Handlers
             }
 
             // map command to the model
-            var model = Mapper.Map<Store>(command);
+            var model = Mapper.Map<Alisveris.Model.Entities.Store>(command);
 
             // mark the model to insert
             storeRepository.Insert(model);

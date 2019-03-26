@@ -10,9 +10,9 @@ namespace Alisveris.Service.Handlers
 {
     public class EditStoreHandler : CommandHandler<Commands.EditStore>
     {
-        private readonly IRepository<Store> storeRepository;
+        private readonly IRepository<Alisveris.Model.Entities.Store> storeRepository;
         private readonly IUnitOfWork unitOfWork;
-        public EditStoreHandler(IUnitOfWork unitOfWork, IRepository<Store> storeRepository)
+        public EditStoreHandler(IUnitOfWork unitOfWork, IRepository<Alisveris.Model.Entities.Store> storeRepository)
         {
             this.unitOfWork = unitOfWork;
             this.storeRepository = storeRepository;
@@ -53,7 +53,7 @@ namespace Alisveris.Service.Handlers
             }
 
             // map command to the model
-            var model = Mapper.Map<Store>(command);
+            var model = Mapper.Map<Alisveris.Model.Entities.Store>(command);
 
             // mark the model to update
             storeRepository.Update(model);

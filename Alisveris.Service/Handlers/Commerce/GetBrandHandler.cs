@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Alisveris.Service.Handlers
 {
-{
+
     public class GetBrandHandler : CommandHandler<Commands.GetBrand>
     {
         private readonly IRepository<Brand> brandRepository;

@@ -37,7 +37,7 @@ namespace Alisveris.Service.Queries
         public string BrandId { get; set; }
         public Brand Brand { get; set; }
         public string StoreId { get; set; }
-        public Store Store { get; set; }
+        public Alisveris.Model.Entities.Store Store { get; set; }
         public int Quantity { get; set; }
 
 

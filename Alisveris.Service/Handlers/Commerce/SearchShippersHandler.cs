@@ -62,7 +62,7 @@ namespace Alisveris.Service.Handlers.Commerce
                 .Select(x => Mapper.Map<ShipperQuery>(x)).ToList();
                 // return the paged query
                 result = new Result(true, value, $"Bulunan {totalRecordCount} kargo firmalarının {command.PageNumber}. sayfasındaki kayıtlar.", true, totalRecordCount);
-                return Task.FromResult(result);
+                return await Task.FromResult(result);
             }
             else
             {
@@ -70,7 +70,7 @@ namespace Alisveris.Service.Handlers.Commerce
                 .Select(x => Mapper.Map<ShipperQuery>(x)).ToList();
                 // return the query
                 result = new Result(true, value, $"{value.Count()} adet kargo firması bulundu.", true, value.Count());
-                return Task.FromResult(result);
+                return await Task.FromResult(result);
             }
         }
     }
