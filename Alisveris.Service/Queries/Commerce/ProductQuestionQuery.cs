@@ -14,6 +14,7 @@ namespace Alisveris.Service.Queries
         public QuestionCategory QuestionCategory { get; set; }
         public string StoreId { get; set; }
         public Alisveris.Model.Entities.Store Store { get; set; }
+
         public string Title { get; set; }
         public string Description { get; set; }
         public string Email { get; set; }
