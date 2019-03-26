@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alisveris.Model", "Alisveri
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alisveris.Data", "Alisveris.Data\Alisveris.Data.csproj", "{CE51C01D-17E9-4A08-BB96-464BE3F1B881}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alisveris.Service", "Alisveris.Service\Alisveris.Service.csproj", "{A64360E0-CC47-46DA-B773-B236651D0162}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alisveris.Service", "Alisveris.Service\Alisveris.Service.csproj", "{F3BE73D1-A986-4DDA-8D44-6E2EBCD7A057}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{CE51C01D-17E9-4A08-BB96-464BE3F1B881}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE51C01D-17E9-4A08-BB96-464BE3F1B881}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE51C01D-17E9-4A08-BB96-464BE3F1B881}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A64360E0-CC47-46DA-B773-B236651D0162}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A64360E0-CC47-46DA-B773-B236651D0162}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A64360E0-CC47-46DA-B773-B236651D0162}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A64360E0-CC47-46DA-B773-B236651D0162}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3BE73D1-A986-4DDA-8D44-6E2EBCD7A057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3BE73D1-A986-4DDA-8D44-6E2EBCD7A057}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3BE73D1-A986-4DDA-8D44-6E2EBCD7A057}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3BE73D1-A986-4DDA-8D44-6E2EBCD7A057}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,9 +7,9 @@ using System.Text;
 namespace Alisveris.Service.Commands
 {
     [Describe(CommandType.Commerce, Authorities.Read, "Resimleri arar.")]
-    public class SearchColor : Command, ISearchCommand
+    public class SearchColors : Command, ISearchCommand
     {
-        public SearchColor()
+        public SearchColors()
         {
             IsAdvancedSearch = false;
             SortField = "createdAt";

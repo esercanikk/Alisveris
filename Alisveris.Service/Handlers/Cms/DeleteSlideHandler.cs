@@ -26,7 +26,7 @@ namespace Alisveris.Service.Handlers.Cms
             if (model == null)
             { 
                 // return the not found result
-                result = new Result(false, model, "Slayt bulunamadı.", true, null);
+                result = new Result(false, command.Id, "Slayt bulunamadı.", true, null);
                 return await Task.FromResult(result);         
             }
             // delete the model

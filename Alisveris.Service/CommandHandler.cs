@@ -29,15 +29,16 @@ namespace Alisveris.Service
         {
             return await HandleAsync((T)command);
         }
-
-        public virtual dynamic Handle(Command command)
+        public virtual dynamic Handle(T command)
         {
             return Handle((T)command);
         }
 
-        public virtual dynamic Handle(T command)
+        public virtual dynamic Handle(Command command)
         {
-            throw new NotImplementedException();
+            return HandleAsync((T)command);
         }
+
+    
     }
 }
