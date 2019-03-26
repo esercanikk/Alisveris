@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Alisveris.Service.Queries
 {
-    public class DistrictQuery
+    public class DistrictQuery:Query
     {
         public string Id { get; set; }
         public string Name { get; set; }

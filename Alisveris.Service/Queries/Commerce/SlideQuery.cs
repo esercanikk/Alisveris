@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Alisveris.Service.Queries.Commerce
 {
-    public class SlideQuery
+    public class SlideQuery : Query
     {
         public string Id { get; set; }
         public string Name { get; set; }

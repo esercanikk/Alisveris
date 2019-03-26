@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Alisveris.Service.Queries.Commerce
 {
-    public class CountryQuery
+    public class CountryQuery : Query
     {
         public string Id { get; set; }
         public string Name { get; set; }

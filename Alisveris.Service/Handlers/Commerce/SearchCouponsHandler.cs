@@ -1,5 +1,6 @@
 ﻿using Alisveris.Data;
 using Alisveris.Model.Entities;
+using Alisveris.Service.Queries;
 using Alisveris.Service.Queries.Commerce;
 using AutoMapper;
 using System;

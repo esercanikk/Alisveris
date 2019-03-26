@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Alisveris.Service.Queries.Cms
 {
-    public class FileQuery
+    public class FileQuery:Query
     {
         public string Id { get; set; }
         public string Name { get; set; }
