@@ -53,8 +53,8 @@ namespace Alisveris.Service.Handlers
             // save changes to database
             await unitOfWork.SaveChangesAsync();
 
-            result = new Result(true, model.Id, "Ürün başarıyla eklendi.", true, 1);
             // return the result
+            result = new Result(true, model.Id, "Ürün başarıyla eklendi.", true, 1);
             return await Task.FromResult(result);
         }
     }
