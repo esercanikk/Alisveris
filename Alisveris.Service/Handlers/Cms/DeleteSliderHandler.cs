@@ -26,11 +26,11 @@ namespace Alisveris.Service.Handlers.Cms
             if (model == null)
             {
                 // return the not found result
-                result = new Result(true, model, "Kaydırıcı bulunamadı.", true, null);
+                result = new Result(true, command.Id, "Kaydırıcı bulunamadı.", true, null);
                 return await Task.FromResult(result);
             }
             // delete the model
-            sliderRepository.Delete(model);
+             sliderRepository.Delete(model);
            await unitOfWork.SaveChangesAsync();
 
 
