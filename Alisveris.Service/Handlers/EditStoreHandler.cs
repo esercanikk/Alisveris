@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace Alisveris.Service.Handlers
 {
-    public class EditColorHandler : CommandHandler<Commands.EditColor>
+    public class EditStoreHandler : CommandHandler<Commands.EditStore>
     {
-        private readonly IRepository<Color> colorRepository;
+        private readonly IRepository<Store> storeRepository;
         private readonly IUnitOfWork unitOfWork;
-        public EditColorHandler(IUnitOfWork unitOfWork, IRepository<Color> colorRepository)
+        public EditStoreHandler(IUnitOfWork unitOfWork, IRepository<Store> storeRepository)
         {
             this.unitOfWork = unitOfWork;
-            this.colorRepository = colorRepository;
+            this.storeRepository = storeRepository;
         }
-        public override async Task<dynamic> HandleAsync(Commands.EditColor command)
+        public override async Task<dynamic> HandleAsync(Commands.EditStore command)
         {
             Result result;
             // validate the command
@@ -25,39 +25,46 @@ namespace Alisveris.Service.Handlers
             {
                 result = new Result(false, command.Id, "Id gereklidir.", true, null);
                 return await Task.FromResult(result);
+                
             }
             if (string.IsNullOrWhiteSpace(command.Name))
             {
-                result = new Result(false, true, "Renk gereklidir.", true, null);
+                result = new Result(false, true, "Ad gereklidir.", true, null);
                 return await Task.FromResult(result);
+                
             }
             if (command.Name.Length > 200)
             {
-                result = new Result(false, true, "Renk 200 karakterden uzun olamaz.", true, null);
+                result = new Result(false, true, "Ad 200 karakterden uzun olamaz.", true, null);
                 return await Task.FromResult(result);
+                
             }
-            if (string.IsNullOrWhiteSpace(command.Value))
+            if (string.IsNullOrWhiteSpace(command.Slug))
             {
-                result = new Result(false, true, "Değer gereklidir.", true, null);
+                result = new Result(false, true, "Bağlantı gereklidir.", true, null);
                 return await Task.FromResult(result);
+               
             }
-            if (command.Value.Length > 200)
+            if (command.Slug.Length > 200)
             {
-                result = new Result(false, true, "Değer 200 karakterden uzun olamaz.", true, null);
+                result = new Result(false, true, "Bağlantı 200 karakterden uzun olamaz.", true, null);
                 return await Task.FromResult(result);
+              
             }
+
             // map command to the model
-            var model = Mapper.Map<Color>(command);
+            var model = Mapper.Map<Store>(command);
 
             // mark the model to update
-            colorRepository.Update(model);
+            storeRepository.Update(model);
 
             // save changes to database
            await unitOfWork.SaveChangesAsync();
 
             // return the result
-            result = new Result(true, model.Id, "Renk başarıyla güncellendi.", true, 1);
+            result = new Result(true, model.Id, "Mağaza başarıyla güncellendi.", false, 1);
             return await Task.FromResult(result);
+            
         }
     }
 }
