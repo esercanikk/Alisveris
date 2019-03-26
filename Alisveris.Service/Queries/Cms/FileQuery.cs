@@ -6,7 +6,7 @@ namespace Alisveris.Service.Queries.Cms
 {
     public class FileQuery:Query
     {
-        public string Id { get; set; }
+      
         public string Name { get; set; }
         public bool? IsActive { get; set; }
         public string OriginalName { get; set; }

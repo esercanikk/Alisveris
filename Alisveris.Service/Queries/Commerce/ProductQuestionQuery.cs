@@ -7,7 +7,7 @@ namespace Alisveris.Service.Queries
 {
     public class ProductQuestionQuery : Query
     {
-        public string Id { get; set; }
+       
         public string ProductId { get; set; }
         public Product Product { get; set; }
         public string QuestionCategoryId { get; set; }

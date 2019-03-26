@@ -8,7 +8,7 @@ namespace Alisveris.Service.Queries
 {
     public class WishlistQuery:Query
     {
-        public string Id { get; set; }
+      
         public string Name { get; set; }
         public string Slug { get; set; }
         public bool IsFeatured { get; set; }

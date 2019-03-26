@@ -7,7 +7,7 @@ namespace Alisveris.Service.Queries.Commerce
 {
     public class QuestionCategoryQuery : Query
     {
-        public string Id { get; set; }
+       
         public string Name { get; set; }
         public virtual ICollection<ProductQuestion> ProductQuestions { get; set; }
     }

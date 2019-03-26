@@ -6,7 +6,7 @@ namespace Alisveris.Service.Queries.Commerce
 {
     public class SlideQuery : Query
     {
-        public string Id { get; set; }
+      
         public string Name { get; set; }
         public string Title { get; set; }
         public string Text { get; set; }

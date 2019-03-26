@@ -8,7 +8,7 @@ namespace Alisveris.Service.Queries
 {
     public class OrderQuery:Query
     {
-        public string Id { get; set; }
+   
         public string UserName { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime DemandDate { get; set; }

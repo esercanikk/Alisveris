@@ -6,7 +6,7 @@ namespace Alisveris.Service.Queries.Commerce
 {
     public class PostPostCategoryQuery : Query
     {
-        public string Id { get; set; }
+      
         public string PostId { get; set; }
         public string PostCategoryId { get; set; }
 
