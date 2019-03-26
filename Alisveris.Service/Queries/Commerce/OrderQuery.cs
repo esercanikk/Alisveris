@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Alisveris.Service.Queries
 {
-    public class OrderQuery
+    public class OrderQuery:Query
     {
         public string Id { get; set; }
         public string UserName { get; set; }
@@ -22,6 +22,5 @@ namespace Alisveris.Service.Queries
         public IList<OrderItem> OrderItems { get; set; }
         //public OrderItem OrderItem { get; set; }
         public OrderStatus OrderStatus { get; set; }
-
     }
 }

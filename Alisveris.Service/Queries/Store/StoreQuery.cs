@@ -6,7 +6,7 @@ namespace Alisveris.Service.Queries.Store
 {
     public class StoreQuery:Query
     {
-        public string Id { get; set; }
+       
         public string Name { get; set; }
         public string Slug { get; set; }
         public string Owner { get; set; }
