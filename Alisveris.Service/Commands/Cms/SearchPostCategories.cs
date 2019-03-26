@@ -5,9 +5,9 @@ using System.Text;
 namespace Alisveris.Service.Commands
 {
     [Describe(CommandType.Cms, Authorities.Read, "Yazı kategorilerini arar.")]
-    public class SearchPostCategory : Command, ISearchCommand
+    public class SearchPostCategories : Command, ISearchCommand
     {
-        public SearchPostCategory()
+        public SearchPostCategories()
         {
             IsAdvancedSearch = false;
             SortField = "createdAt";

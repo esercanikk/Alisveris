@@ -7,7 +7,8 @@ using System.Text;
 namespace Alisveris.Service.Queries
 {
     public class ProductColorQuery :Query
-    {        
+    {
+       
         public string Name { get; set; }
         public string Alt { get; set; }
         public string ProductId { get; set; }
